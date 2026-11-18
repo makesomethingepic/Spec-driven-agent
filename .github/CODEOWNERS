@@ -1,11 +1,12 @@
-# Replace every placeholder with a real GitHub user or team before the pilot.
-*                         @<ORG>/<FUNCTION>-pm
-/03-spec/                 @<ORG>/<FUNCTION>-pm @<STAKEHOLDER>
-/04-design/               @<ARCHITECT>
-/04-design/threat-model.md @<ARCHITECT> @<SECURITY-REVIEWER>
-/05-plan/                 @<ORG>/<FUNCTION>-pm
-/evals/                   @<AI-EVAL-EXPERT>
-/06-release/              @<ORG>/<FUNCTION>-pm @<STAKEHOLDER>
-/.github/                 @<ARCHITECT>
-/.claude/                 @<ARCHITECT>
-/CLAUDE.md                @<ARCHITECT>
+# Interim: one owner for everything. Replace with the named PM, stakeholder, architect,
+# security reviewer and AI-eval subject expert per function before the pilot.
+*                          @makesomethingepic
+/03-spec/                  @makesomethingepic
+/04-design/                @makesomethingepic
+/04-design/threat-model.md @makesomethingepic
+/05-plan/                  @makesomethingepic
+/evals/                    @makesomethingepic
+/06-release/               @makesomethingepic
+/.github/                  @makesomethingepic
+/.claude/                  @makesomethingepic
+/CLAUDE.md                 @makesomethingepic
