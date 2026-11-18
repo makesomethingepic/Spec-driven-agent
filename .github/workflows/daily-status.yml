@@ -1,0 +1,28 @@
+name: daily-status
+on:
+  schedule:
+    - cron: "0 12 * * *" # 07:00 ET in winter (EST); 08:00 during daylight time
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: read
+  pull-requests: read
+  actions: read
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: Use the status sub-agent to write today's PM report and update .agent-state/status.json. Do not change any other file.
+      # main is protected, so the dashboard reads status.json from the `status` branch.
+      - name: Publish status.json to the status branch
+        run: |
+          git config user.name "status-agent"
+          git config user.email "status-agent@users.noreply.github.com"
+          git add .agent-state/status.json
+          git diff --cached --quiet && exit 0
+          git commit -m "status: daily report $(date -u +%F)"
+          git push --force origin HEAD:status

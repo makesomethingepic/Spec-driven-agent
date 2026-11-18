@@ -1,0 +1,7 @@
+# Which Feature may change which files. No overlap; CI enforces it.
+# features:
+#   FEAT-01: [src/billing/**, tests/unit/billing/**]
+#   FEAT-02: [src/reports/**]
+features: {}
+# Shared files belong to the integration agent.
+shared: []

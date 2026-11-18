@@ -1,0 +1,22 @@
+name: deploy
+# Runs only when a human starts it after G8. The `production` environment must require
+# a named human reviewer and hold all deployment secrets.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release version (tag or release/<version> merged to main)
+        required: true
+permissions:
+  contents: read
+concurrency: production
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      # TODO per product: deploy behind a feature flag, per 06-release/.
+      - run: |
+          echo "No deploy step configured for ${{ inputs.version }}"; exit 1

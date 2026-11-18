@@ -1,0 +1,23 @@
+{
+  "handoff_id": "HO-2026-11-17-004",
+  "product": "<PRODUCT>",
+  "function": "Finance",
+  "from_agent": "spec",
+  "to_agent": "architecture",
+  "stage": "5-design",
+  "spec_version": "1.2.0",
+  "trace": { "idea": "IDEA-012", "requirements": ["REQ-001", "REQ-002"] },
+  "inputs": ["03-spec/spec.md"],
+  "outputs_expected": ["04-design/adr/", "04-design/threat-model.md"],
+  "done_when": ["Every REQ maps to a component", "Threat model covers each data class"],
+  "constraints": {
+    "data_classes": ["customer-confidential"],
+    "cost_limit_usd": 2500,
+    "cost_spent_usd": 410,
+    "task_limit_usd": 15
+  },
+  "assumptions": [],
+  "open_questions": [],
+  "gate": { "name": "G5-design", "approvers": ["architect named in spec"], "status": "pending" },
+  "status": "ready"
+}

@@ -1,0 +1,16 @@
+{
+  "product": "<PRODUCT>",
+  "function": "<FUNCTION>",
+  "pm": "<PM name>",
+  "updated_at": null,
+  "health": { "status": "on_track", "reason": "Not started" },
+  "stage": 0,
+  "gate": null,
+  "spec_version": null,
+  "progress": [],
+  "escalations": [],
+  "cost": { "limit_usd": null, "spent_usd": 0, "forecast_usd": null, "today_usd": 0 },
+  "security": { "critical": 0, "high": 0, "medium": 0, "low": 0 },
+  "quality": { "tests_pass_rate": null, "ac_coverage": null, "eval_score": null },
+  "next_24h": []
+}

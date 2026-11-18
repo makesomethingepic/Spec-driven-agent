@@ -1,0 +1,16 @@
+name: evals
+on:
+  pull_request:
+    paths: ["evals/**", "src/**"]
+permissions:
+  contents: read
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # TODO per product: run the eval suite against the thresholds in spec section 8.
+      # Below threshold must fail this job. Narrow `paths` to the AI components.
+      - run: |
+          if [ -f Makefile ] && grep -q '^evals:' Makefile; then make evals
+          else echo "::notice::No eval target. Required only if spec section 8 defines AI behavior."; fi

@@ -1,0 +1,24 @@
+name: security
+on:
+  pull_request:
+  schedule:
+    - cron: "0 6 * * *" # nightly
+permissions:
+  contents: read
+jobs:
+  dependency-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        with: { fail-on-severity: high }
+  no-env-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No .env or secrets/ committed
+        run: |
+          if git ls-files | grep -E '(^|/)\.env|^secrets/'; then echo "Secret-bearing files are tracked"; exit 1; fi
+  # TODO per org: enable GitHub secret scanning and code scanning (CodeQL) for the
+  # product's languages, plus infrastructure and license scans. See "Open items".
